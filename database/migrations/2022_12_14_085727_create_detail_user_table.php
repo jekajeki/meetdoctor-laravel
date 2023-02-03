@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('detail_user', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('type_user_id');
+            // $table->unsignedBigInteger('user_id');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            // $table->integer('type_user_id');
+            $table->foreignId('type_user_id')->references('id')->on('type_user')->onDelete('cascade')->onUpdate('cascade');
             $table->string('contact')->nullable();
             $table->string('address')->nullable();
             $table->string('photo',)->nullable();

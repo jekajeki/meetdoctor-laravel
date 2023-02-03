@@ -15,9 +15,12 @@ return new class extends Migration
     {
         Schema::create('appointment', function (Blueprint $table) {
             $table->id();
-            $table->integer('doctor_id');
-            $table->integer('user_id');
-            $table->integer('consultation_id');
+            // $table->integer('doctor_id');
+            $table->foreignId('doctor_id')->references('id')->on('doctor')->onDelete('cascade')->onUpdate('cascade');
+            // $table->integer('user_id');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            // $table->integer('consultation_id');
+            $table->foreignId('consultation_id')->references('id')->on('consultation')->onDelete('cascade')->onUpdate('cascade');
             $table->enum('level', [1, 2, 3]);
             $table->date('date')->nullable();
             $table->time('time')->nullable();

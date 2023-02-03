@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('doctor', function (Blueprint $table) {
             $table->id();
-            $table->integer('specialist_id');
+            // $table->integer('specialist_id');
+            $table->foreignId('specialist_id')->references('id')->on('specialist')->onDelete('cascade')->onUpdate('cascade');
             $table->string('name');
             $table->string('fee');
             $table->string('photo');

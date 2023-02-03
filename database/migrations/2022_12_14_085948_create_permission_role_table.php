@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('permission_role', function (Blueprint $table) {
             $table->id();
-            $table->string('permission_id');
-            $table->string('role_id');
+            // $table->string('permission_id');
+            $table->foreignId('permission_id')->references('id')->on('permission')->onDelete('cascade')->onUpdate('cascade');
+            // $table->string('role_id');
+            $table->foreignId('role_id')->references('id')->on('role')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
             $table->softDeletes();
         });
