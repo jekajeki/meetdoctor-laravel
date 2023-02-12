@@ -11,6 +11,7 @@ class ConfigPayment extends Model
     // use HasFactory;
     use SoftDeletes;
 
+    protected $table = 'config_payment';
     protected $dates = [
         'created_at',
         'updated_at',

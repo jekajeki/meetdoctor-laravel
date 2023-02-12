@@ -11,6 +11,7 @@ class Specialist extends Model
     // use HasFactory;
     use SoftDeletes;
 
+    protected $table = 'specialist';
     protected $dates = [
         'created_at',
         'updated_at',
